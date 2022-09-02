@@ -22,7 +22,7 @@ pipeline {
                 container('maven') {
                     dir ('./hello-springboot-mvn'){
                         sh """
-                        ./gradlew clean build --exclude-task test
+                        ./mvn -Dmaven.test.failure.ignore verify
                         """
                     }
                 }
