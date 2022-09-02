@@ -12,7 +12,7 @@ pipeline {
             container('maven'){
             git url: 'https://github.com/inganyoyo/hello-devops.git',
               branch: 'main'
-              //credentialsId: '생성한 github access token credentail id' --dd
+              //credentialsId: '생성한 github access token credentail id' --dd d
             }
             }
         }
