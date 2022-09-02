@@ -23,6 +23,9 @@ spec:
         - sleep
       args:
         - infinity
+      volumeMounts:
+        - name: jenkins-maven
+          mountPath: /root/.m2
   volumes:
     - name: jenkins-docker-cfg
       projected:
@@ -32,3 +35,6 @@ spec:
               items:
                 - key: .dockerconfigjson
                   path: config.json
+    - name: jenkins-maven
+      persistentVolumeClaim:
+        claimName: "jenkins-maven"
