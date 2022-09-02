@@ -26,6 +26,12 @@ spec:
       volumeMounts:
         - name: jenkins-maven
           mountPath: /root/.m2
+    - name: gradle
+      image: gradle:5.6-jdk8
+      command:
+        - sleep
+      args:
+        - infinity
   volumes:
     - name: jenkins-docker-cfg
       projected:

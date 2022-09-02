@@ -29,6 +29,19 @@ pipeline {
                 }
             }
         }
+
+        stage ('build gradle') {
+            steps {
+                container('gradle') {
+                    dir ('./hello-springboot'){
+                        sh """
+                        gradle -x test build
+                        """
+                    }
+                }
+            }
+        }
+
     }
 }
 
