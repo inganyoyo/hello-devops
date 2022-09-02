@@ -37,7 +37,7 @@ pipeline {
                             dir ('./hello-springboot'){
                                 sh """
                                 gradle -v
-                                gradle build
+                                gradle build -i
                                 """
                             }
                         }
