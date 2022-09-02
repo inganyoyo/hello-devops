@@ -22,6 +22,7 @@ pipeline {
                 container('maven') {
                     dir ('./hello-springboot-mvn'){
                         sh """
+                        mvn -version
                         ./mvn -Dmaven.test.failure.ignore verify
                         """
                     }
