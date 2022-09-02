@@ -16,27 +16,29 @@ pipeline {
             }
             }
         }
-        parallel {
-            stage ('build project via maven') {
-                steps {
-                    container('maven') {
-                        dir ('./hello-springboot-mvn'){
-                            sh """
-                            mvn -version
-                            mvn clean install
-                            """
+        stage('Build') {
+            parallel {
+                stage ('build project via maven') {
+                    steps {
+                        container('maven') {
+                            dir ('./hello-springboot-mvn'){
+                                sh """
+                                mvn -version
+                                mvn clean install
+                                """
+                            }
                         }
                     }
                 }
-            }
 
-            stage ('build gradle') {
-                steps {
-                    container('gradle') {
-                        dir ('./hello-springboot'){
-                            sh """
-                            gradle -x test build
-                            """
+                stage ('build gradle') {
+                    steps {
+                        container('gradle') {
+                            dir ('./hello-springboot'){
+                                sh """
+                                gradle -x test build
+                                """
+                            }
                         }
                     }
                 }
