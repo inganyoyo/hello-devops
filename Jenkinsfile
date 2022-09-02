@@ -23,7 +23,7 @@ pipeline {
                     dir ('./hello-springboot-mvn'){
                         sh """
                         mvn -version
-                        mvn clean package
+                        mvn clean install
                         """
                     }
                 }
