@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Build') {
             parallel {
-                stage ('build project via maven') {
+                stage ('build project maven') {
                     steps {
                         container('maven') {
                             dir ('./hello-springboot-mvn'){
@@ -31,11 +31,12 @@ pipeline {
                     }
                 }
 
-                stage ('build gradle') {
+                stage ('build project gradle') {
                     steps {
                         container('gradle') {
                             dir ('./hello-springboot'){
                                 sh """
+                                gradle -v
                                 gradle -x test build
                                 """
                             }
