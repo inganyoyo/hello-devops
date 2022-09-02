@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage ('unit test') {
+        stage ('build project via mane') {
             steps {
                 container('maven') {
                     dir ('./hello-springboot-mvn'){
@@ -30,17 +30,17 @@ pipeline {
             }
         }
 
-        stage ('build gradle') {
-            steps {
-                container('gradle') {
-                    dir ('./hello-springboot'){
-                        sh """
-                        gradle -x test build
-                        """
-                    }
-                }
-            }
-        }
+//         stage ('build gradle') {
+//             steps {
+//                 container('gradle') {
+//                     dir ('./hello-springboot'){
+//                         sh """
+//                         gradle -x test build
+//                         """
+//                     }
+//                 }
+//             }
+//         }
 
     }
 }
