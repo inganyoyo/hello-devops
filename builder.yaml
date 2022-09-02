@@ -32,6 +32,9 @@ spec:
         - sleep
       args:
         - infinity
+      volumeMounts:
+        - name: jenkins-gradle
+          mountPath: /home/gradle/.gradle
   volumes:
     - name: jenkins-docker-cfg
       projected:
@@ -44,3 +47,6 @@ spec:
     - name: jenkins-maven
       persistentVolumeClaim:
         claimName: "jenkins-maven"
+    - name: jenkins-gradle
+      persistentVolumeClaim:
+        claimName: "jenkins-gradle"
