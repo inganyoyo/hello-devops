@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage ('build project via mane') {
+        stage ('build project via maven') {
             steps {
                 container('maven') {
                     dir ('./hello-springboot-mvn'){
