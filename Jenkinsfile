@@ -35,7 +35,6 @@ pipeline {
                 container('gradle') {
                     dir ('./hello-springboot'){
                         sh """
-                        gradlew --version
                         gradle -x test build
                         """
                     }
