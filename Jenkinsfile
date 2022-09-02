@@ -12,7 +12,7 @@ pipeline {
             container('maven'){
             git url: 'https://github.com/inganyoyo/hello-devops.git',
               branch: 'main'
-              //credentialsId: '생성한 github access token credentail id'
+              //credentialsId: '생성한 github access token credentail id' --dd
             }
             }
         }
@@ -20,9 +20,14 @@ pipeline {
         stage ('unit test') {
             steps {
                 container('maven') {
-                    sh './hello-springboot-mvn/mvn -B -Dmaven.test.failure.ignore verify'
+                    dir ('./hello-springboot-mvn'){
+                        sh """
+                        ./gradlew clean build --exclude-task test
+                        """
+                    }
                 }
             }
         }
     }
 }
+
